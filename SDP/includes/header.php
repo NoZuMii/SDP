@@ -1,8 +1,6 @@
 <?php 
     require '../modules/config.php';
-
 ?>
-
 <header>
     <style>
      div.header_logo {
@@ -56,10 +54,10 @@
         }
     </style>
     <div class="header_logo">
-        <a href="../index.php" title="W3000School"><img src="../images/monika.jpg" alt="W3000school" height="150vh"></a>
+        <a href="../index.php" title="W3000School"><img src="../images/logo.png" alt="W3000school" height="150vh"></a>
     </div>
     <div class="header_welcome">
-        <span id="header_greeting">Welcome</span>, <br> <a class="username-dropdown-btn" onclick="displayUsernameDropdown()"><?php echo $username; ?></a><br>
+                <span id="header_greeting">Welcome</span>, <br> <a class="username-dropdown-btn" onclick="displayUsernameDropdown()"><?php echo $username; ?></a><br>
                     <div id="header-username-dropdown" class="header-username-dropdown-content"><br>
                         <a href="../public/profile.php"> Profile</a><br><br>
                         <a href="../modules/logout.php"> Logout</a><br> &nbsp;

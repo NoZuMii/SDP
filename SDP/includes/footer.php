@@ -7,6 +7,7 @@
             max-width: 100%;
             max-height: 100%;
             height: 4%;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
         }
         table#footer{
             width: 100%;
@@ -35,8 +36,8 @@
         <tr id="footer">
             <td class="copyright" id="footer">
                 <a style="font-size: 1.5vw;" href="../index.php" class="footer">Homepage</a>
-                <a style="font-size: 1.5vw;" href="../public/about.php" class="footer">About Us</a> 
-                <a style="font-size: 1.5vw;" href="../public/contact.php" class="footer">Contact</a>
+                <a style="font-size: 1.5vw;" href="" class="footer">About Us</a> 
+                <a style="font-size: 1.5vw;" href="" class="footer">Contact Us</a>
             </td>
         </tr>
     </table>
