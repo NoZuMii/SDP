@@ -25,11 +25,20 @@
             border: 1px solid black;
             margin: 100px;
             padding: 20px;
-            background-color: lightblue; /* Set background color for the entire box */
+            background-color: whitesmoke; /* Set background color for the entire box */
             display: flex;
             justify-content: center; 
             align-items: center; 
+            border-radius: 25px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+            border: none;
             }
+
+            .box:hover{
+                background-color: lightblue;
+                color:white;    
+            }
+
             .centered {
             text-align: center;
             }
@@ -41,6 +50,12 @@
             height: 100%;
             text-decoration: none;
             color: inherit;
+            }
+
+            h2{
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+
             }
     </style>
 </head>
@@ -58,8 +73,14 @@
                 </a>
             </div>
             <div class="box">
-                <a href="feedbacks.html" class="box-content" target="blank">
-                    <h2>Feedbacks</h2>
+                <a href="../teacher/teacher_feedback.php" class="box-content" target="blank">
+                    <h2> My Feedbacks</h2>
+                </a>
+            </div>
+
+            <div class="box">
+                <a href="../teacher/student_feedback.php" class="box-content" target="blank">
+                    <h2>Student Feedbacks</h2>
                 </a>
             </div>
         </div>
