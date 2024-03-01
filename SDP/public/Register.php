@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $phone = $_POST["Tel"];
     $gender = $_POST["gender"];
     $role = $_POST["user_type"];
-
+    
     $sql = "SELECT * from user where email = '$email'";
 
     $result = mysqli_query($conn, $sql);
@@ -28,10 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error[] = "Password and Confirmed Password are not matched!";
     } else {
         $prefix = date('Ymd');
-        $new_userID = uniqid("U" . $prefix);
+        $userID = uniqid("U" . $prefix);
         # Insert into user table
         $sql = "INSERT INTO user(userID, username, gender, email, phone, birthday, password, role, AccStatus) 
-                VALUES('$new_userID', '$username', '$gender', '$email', '$phone','$birthday', '$password', '$role', 'Active')";
+                VALUES('$userID', '$username', '$gender', '$email', '$phone','$birthday', '$password', '$role', 'Active')";
 
         if (!mysqli_query($conn, $sql)) {
             trigger_error("Insertion to user table fail", E_USER_NOTICE);
@@ -39,20 +39,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             if ($role == 'student') {
                 $new_badge_id = uniqid("B" . $prefix);
-                # Insert into badge table
-                $badge_sql = "INSERT INTO earnedbadge(EarnedbadgeID, userID, BadgeID)
-                            VALUES('$new_badge_id', '$new_userID')";
+                # Insert into earnedbadge table
+                $badge_sql = "INSERT INTO earnedbadge(EarnbadgeID, userID)
+                            VALUES('$new_badge_id', '$userID')";
                 if (!mysqli_query($conn, $badge_sql)) {
-                    trigger_error("Insertion to badge table fail", E_USER_NOTICE);
+                    trigger_error("Insertion to earnedbadge table fail", E_USER_NOTICE);
                     die;
                 }
             }
-
+        }
             echo "success";
             echo "<script> alert('Registration success!'); window.location.href='../index.php';</script>";
         }
     }
-}
+
 
 
 ?>
@@ -189,19 +189,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .form-container a:hover {
             text-decoration: underline;
         }
+
+        .error-msg {
+            display: block;
+            background: red;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+        }
+
     </style>
     <link rel="stylesheet" href="../styles/showPassword.css">
 </head>
 <body>
     <div class="form-container">
-
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <a href="../index.php"></a>
             <section><br>
                 <h1><img src="../images/register.png" alt="Register" width="5%"> Register Now!</h1><br>
             </section>
-
-            <section>
                 <label for="name">Name</label>
             </section>
             <section>
