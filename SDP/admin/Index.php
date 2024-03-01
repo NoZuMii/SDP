@@ -81,6 +81,9 @@
             border: none;
             width: 20%;
             height: 30px;
+            border-radius: 25px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+            margin: 20px;
         }
         button.index-button:hover{
             cursor: pointer;
@@ -104,9 +107,10 @@
     </div>
     <div class="feedback" id ="up_card">
         <h3 class="card_title" style="text-align: center;"> Feedbacks</h3>
-        <p class="card_desc">check feedbacks from <b>Teachers</b> and <b>users</b></p>
+        <p class="card_desc">check feedbacks from <b>Teachers</b> and <b>Students</b></p>
         <span class="card_desc" >&nbsp;Total feedbacks: <b><?php echo $feedback_list_length; ?></b> </span><br><br>
-        <button class="index-button" onclick="window.location.href='../admin/feedback.php';" title="Go to Feedback page">click!</button>
+        <button class="index-button" onclick="window.location.href='../admin/teacher_feedback.php';" title="Go to Teacher Feedback page">Teacher</button>
+        <button class="index-button" onclick="window.location.href='../admin/student_feedback.php';" title="Go to Student Feedback page">Student</button>
 
         <br>&nbsp;
     </div>

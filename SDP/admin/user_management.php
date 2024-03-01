@@ -25,7 +25,7 @@
             font-size: 1.5vw;
             height: 2.5vw;
             min-height: 2vw;
-            margin-left: 900px;
+            margin-left: 730px;
             background-color: whitesmoke;
         }
         div.console-container .search-button{
@@ -40,14 +40,16 @@
         }
       
         table.console-content-table{
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 2.7vh;          
             margin-top: 1.5%;  
             background-color: whitesmoke;
             box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
             margin-bottom: 50px;
             border-radius: 25px;
-            margin-left: 200px;
+            margin-left: 100px;
+            padding-bottom: 100px;
+            padding: 40px;
 
 
         }
@@ -70,12 +72,10 @@
             padding: 10%;
         }
         button.ban-button:hover{
-            font-weight: bold;
             color: black;
             background-color: lightgreen;
         }
         button.unban-button:hover{
-            font-weight: bold;
             color: black;
             background-color: lightcoral;
         }
