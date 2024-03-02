@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 21, 2024 at 01:50 PM
+-- Generation Time: Mar 02, 2024 at 04:33 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -145,10 +145,29 @@ DROP TABLE IF EXISTS `earnedbadge`;
 CREATE TABLE IF NOT EXISTS `earnedbadge` (
   `EarnbadgeID` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `userID` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `BadgeID` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`EarnbadgeID`),
-  KEY `UserID` (`userID`),
-  KEY `BadgeID` (`BadgeID`)
+  KEY `UserID` (`userID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `earnedbadge`
+--
+
+INSERT INTO `earnedbadge` (`EarnbadgeID`, `userID`) VALUES
+('B2024030165e2138cd5ef0', 'U2024030165e2138cd5bfd');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `earnedbadge_badge`
+--
+
+DROP TABLE IF EXISTS `earnedbadge_badge`;
+CREATE TABLE IF NOT EXISTS `earnedbadge_badge` (
+  `EarnbadgeID` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `BadgeID` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  UNIQUE KEY `BadgeID` (`BadgeID`),
+  KEY `EarnbadgeID` (`EarnbadgeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -164,10 +183,21 @@ CREATE TABLE IF NOT EXISTS `feedback` (
   `Feedback_Text` text COLLATE utf8mb4_general_ci NOT NULL,
   `subject` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
   `date_created` date NOT NULL,
-  `reply` text COLLATE utf8mb4_general_ci NOT NULL,
+  `reply` varchar(9999) COLLATE utf8mb4_general_ci NOT NULL,
+  `role` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`feedbackID`),
   KEY `userID` (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feedbackID`, `userID`, `Feedback_Text`, `subject`, `date_created`, `reply`, `role`) VALUES
+('F2024022965e09c255c003', 'U2024022165d5c74cdd285', 'student1', 'this is student 1', '2024-02-29', 'hi student1', ''),
+('F2024022965e09c4a9ba34', 'U2024022665dc99349f0b6', 'testing', 'this is testing', '2024-02-29', 'cibai', ''),
+('F2024022965e09c741f8be', 'U2024022165d5c729cb922', 'teacher1', 'this is teacher1', '2024-02-29', '', ''),
+('F2024022965e0a6d8dacbc', 'U2024022165d5c74cdd285', 'werwrwrerwre', 'rrwrwerwrwr', '2024-02-29', 'fuck you', '');
 
 -- --------------------------------------------------------
 
@@ -197,8 +227,11 @@ CREATE TABLE IF NOT EXISTS `question` (
   `QuestionID` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `QuizID` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `Question_text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `NumberQuestion` int NOT NULL,
+  `marks` int NOT NULL,
   `choice` int NOT NULL,
   `sn` int NOT NULL,
+  `wrong` int NOT NULL,
   PRIMARY KEY (`QuestionID`),
   KEY `QuizID` (`QuizID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -216,11 +249,17 @@ CREATE TABLE IF NOT EXISTS `quiz` (
   `QuizCategory` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `Quiz_Pic` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `Quiz_Desc` text COLLATE utf8mb4_general_ci NOT NULL,
-  `total` int NOT NULL,
   `userID` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`QuizID`),
   KEY `userID` (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `quiz`
+--
+
+INSERT INTO `quiz` (`QuizName`, `QuizID`, `QuizCategory`, `Quiz_Pic`, `Quiz_Desc`, `userID`) VALUES
+('werwerwerw', 'Q2024030265e333d865ab7', '', '/67.PNG', 'werwrwerw', 'U2024022165d5c729cb922');
 
 -- --------------------------------------------------------
 
@@ -239,6 +278,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `AccStatus` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `role` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `Profile_Pic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -246,11 +286,13 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userID`, `username`, `gender`, `email`, `phone`, `birthday`, `password`, `AccStatus`, `role`) VALUES
-('U2024022165d5c729cb922', 'teacher1', 'Female', 'teacher@teacher.com', '00001111222', '2013-12-14', '8d788385431273d11e8b43bb78f3aa41', 'Active', 'teacher'),
-('U2024022165d5c74cdd285', 'student1', 'Male', 'student1@student.com', '00001111222', '2013-12-02', '5e5545d38a68148a2d5bd5ec9a89e327', 'Active', 'student'),
-('U2024022165d5ff5cba215', 'admin', 'Male', 'admin@admin.com', '00001111222', '2013-12-13', '21232f297a57a5a743894a0e4a801fc3', 'Active', 'admin'),
-('U2024022165d5ff927788d', 'student2', 'Male', 'student2@student.com', '00001111222', '2013-12-12', '213ee683360d88249109c2f92789dbc3', 'Active', 'premium');
+INSERT INTO `user` (`userID`, `username`, `gender`, `email`, `phone`, `birthday`, `password`, `AccStatus`, `role`, `Profile_Pic`) VALUES
+('U2024022165d5c729cb922', 'teacher1', 'Female', 'teacher@teacher.com', '00001111222', '2013-12-14', '8d788385431273d11e8b43bb78f3aa41', 'Active', 'teacher', ''),
+('U2024022165d5c74cdd285', 'student1', 'Male', 'student1@student.com', '00001111222', '2013-12-02', '5e5545d38a68148a2d5bd5ec9a89e327', 'Active', 'student', ''),
+('U2024022165d5ff5cba215', 'admin', 'Male', 'admin@admin.com', '55551111223', '2013-12-13', '21232f297a57a5a743894a0e4a801fc3', 'Active', 'admin', ''),
+('U2024022165d5ff927788d', 'student2', 'Male', 'student2@student.com', '00001111222', '2013-12-12', '213ee683360d88249109c2f92789dbc3', 'Active', 'premium', ''),
+('U2024022665dc99349f0b6', 'testing', 'Male', 'testing@testing.com', '01232021655', '2013-12-17', '827ccb0eea8a706c4c34a16891f84e7b', 'active', 'student', ''),
+('U2024030165e2138cd5bfd', 'lim yang', 'Male', 'lim.heng.yan@gmail.com', '01232021655', '2013-12-12', 'e10adc3949ba59abbe56e057f20f883e', 'Active', 'student', '');
 
 --
 -- Constraints for dumped tables
@@ -303,8 +345,14 @@ ALTER TABLE `courseprogress`
 -- Constraints for table `earnedbadge`
 --
 ALTER TABLE `earnedbadge`
-  ADD CONSTRAINT `earnedbadge_ibfk_1` FOREIGN KEY (`BadgeID`) REFERENCES `badge` (`BadgeID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `earnedbadge_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `earnedbadge_badge`
+--
+ALTER TABLE `earnedbadge_badge`
+  ADD CONSTRAINT `earnedbadge_badge_ibfk_1` FOREIGN KEY (`BadgeID`) REFERENCES `badge` (`BadgeID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `earnedbadge_badge_ibfk_2` FOREIGN KEY (`EarnbadgeID`) REFERENCES `earnedbadge` (`EarnbadgeID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `feedback`
