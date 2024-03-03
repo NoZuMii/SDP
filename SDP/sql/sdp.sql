@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 02, 2024 at 04:33 PM
+-- Generation Time: Mar 03, 2024 at 08:33 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -219,6 +219,21 @@ CREATE TABLE IF NOT EXISTS `leaderboard` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `options`
+--
+
+DROP TABLE IF EXISTS `options`;
+CREATE TABLE IF NOT EXISTS `options` (
+  `optionID` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `QuestionID` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `options` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`optionID`),
+  KEY `QuestionID` (`QuestionID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `question`
 --
 
@@ -366,6 +381,12 @@ ALTER TABLE `feedback`
 ALTER TABLE `leaderboard`
   ADD CONSTRAINT `leaderboard_ibfk_1` FOREIGN KEY (`QuizID`) REFERENCES `quiz` (`QuizID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `leaderboard_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `options`
+--
+ALTER TABLE `options`
+  ADD CONSTRAINT `options_ibfk_1` FOREIGN KEY (`QuestionID`) REFERENCES `question` (`QuestionID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `question`
