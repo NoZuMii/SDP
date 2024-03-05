@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 03, 2024 at 08:33 AM
+-- Generation Time: Mar 05, 2024 at 08:20 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -39,23 +39,6 @@ CREATE TABLE IF NOT EXISTS `answer` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `badge`
---
-
-DROP TABLE IF EXISTS `badge`;
-CREATE TABLE IF NOT EXISTS `badge` (
-  `BadgeID` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `BadgeName` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `BadgePic` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `CourseID` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `badgeReq` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`BadgeID`),
-  KEY `CourseID` (`CourseID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `chapter`
 --
 
@@ -65,6 +48,7 @@ CREATE TABLE IF NOT EXISTS `chapter` (
   `CourseID` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `example` text COLLATE utf8mb4_general_ci NOT NULL,
   `Explanation` text COLLATE utf8mb4_general_ci NOT NULL,
+  `complete` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`ChapterID`),
   KEY `courseID` (`CourseID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -94,8 +78,6 @@ CREATE TABLE IF NOT EXISTS `chapter_question` (
   `ChapterQuestionID` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `ChapterID` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `Question_text` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
-  `choice` int NOT NULL,
-  `sn` int NOT NULL,
   PRIMARY KEY (`ChapterQuestionID`),
   KEY `ChapterID` (`ChapterID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -114,60 +96,9 @@ CREATE TABLE IF NOT EXISTS `course` (
   `Course_Description` text COLLATE utf8mb4_general_ci NOT NULL,
   `Course_Pic` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `Course_Create_Date` date NOT NULL,
+  `Badge` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`CourseID`),
   KEY `userID` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `courseprogress`
---
-
-DROP TABLE IF EXISTS `courseprogress`;
-CREATE TABLE IF NOT EXISTS `courseprogress` (
-  `ProgressID` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `userID` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `CourseID` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `Progress_Points` int NOT NULL,
-  PRIMARY KEY (`ProgressID`),
-  KEY `userID` (`userID`),
-  KEY `CourseID` (`CourseID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `earnedbadge`
---
-
-DROP TABLE IF EXISTS `earnedbadge`;
-CREATE TABLE IF NOT EXISTS `earnedbadge` (
-  `EarnbadgeID` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `userID` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`EarnbadgeID`),
-  KEY `UserID` (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `earnedbadge`
---
-
-INSERT INTO `earnedbadge` (`EarnbadgeID`, `userID`) VALUES
-('B2024030165e2138cd5ef0', 'U2024030165e2138cd5bfd');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `earnedbadge_badge`
---
-
-DROP TABLE IF EXISTS `earnedbadge_badge`;
-CREATE TABLE IF NOT EXISTS `earnedbadge_badge` (
-  `EarnbadgeID` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `BadgeID` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  UNIQUE KEY `BadgeID` (`BadgeID`),
-  KEY `EarnbadgeID` (`EarnbadgeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -196,8 +127,9 @@ CREATE TABLE IF NOT EXISTS `feedback` (
 INSERT INTO `feedback` (`feedbackID`, `userID`, `Feedback_Text`, `subject`, `date_created`, `reply`, `role`) VALUES
 ('F2024022965e09c255c003', 'U2024022165d5c74cdd285', 'student1', 'this is student 1', '2024-02-29', 'hi student1', ''),
 ('F2024022965e09c4a9ba34', 'U2024022665dc99349f0b6', 'testing', 'this is testing', '2024-02-29', 'cibai', ''),
-('F2024022965e09c741f8be', 'U2024022165d5c729cb922', 'teacher1', 'this is teacher1', '2024-02-29', '', ''),
-('F2024022965e0a6d8dacbc', 'U2024022165d5c74cdd285', 'werwrwrerwre', 'rrwrwerwrwr', '2024-02-29', 'fuck you', '');
+('F2024022965e09c741f8be', 'U2024022165d5c729cb922', 'teacher1', 'this is teacher1', '2024-02-29', 'fuck you', ''),
+('F2024022965e0a6d8dacbc', 'U2024022165d5c74cdd285', 'werwrwrerwre', 'rrwrwerwrwr', '2024-02-29', 'fuck you', ''),
+('F2024030365e481f414c6a', 'U2024022165d5c729cb922', 'qwoenwiebwnuwe', 'fk you', '2024-03-03', '', '');
 
 -- --------------------------------------------------------
 
@@ -320,12 +252,6 @@ ALTER TABLE `answer`
   ADD CONSTRAINT `answer_ibfk_1` FOREIGN KEY (`QuestionID`) REFERENCES `question` (`QuestionID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
--- Constraints for table `badge`
---
-ALTER TABLE `badge`
-  ADD CONSTRAINT `badge_ibfk_1` FOREIGN KEY (`CourseID`) REFERENCES `course` (`CourseID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
 -- Constraints for table `chapter`
 --
 ALTER TABLE `chapter`
@@ -348,26 +274,6 @@ ALTER TABLE `chapter_question`
 --
 ALTER TABLE `course`
   ADD CONSTRAINT `course_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Constraints for table `courseprogress`
---
-ALTER TABLE `courseprogress`
-  ADD CONSTRAINT `courseprogress_ibfk_1` FOREIGN KEY (`CourseID`) REFERENCES `course` (`CourseID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `courseprogress_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Constraints for table `earnedbadge`
---
-ALTER TABLE `earnedbadge`
-  ADD CONSTRAINT `earnedbadge_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
---
--- Constraints for table `earnedbadge_badge`
---
-ALTER TABLE `earnedbadge_badge`
-  ADD CONSTRAINT `earnedbadge_badge_ibfk_1` FOREIGN KEY (`BadgeID`) REFERENCES `badge` (`BadgeID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `earnedbadge_badge_ibfk_2` FOREIGN KEY (`EarnbadgeID`) REFERENCES `earnedbadge` (`EarnbadgeID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `feedback`
