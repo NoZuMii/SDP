@@ -21,7 +21,7 @@ if ($role != 'teacher'){
 									VALUES ('$feedbackID', '$userID', '$description','$subject','$dateCreated')";
 	
 			if (mysqli_query($conn, $insertFeedbackQuery)) {
-				echo "<script>alert('Feedback submitted successfully!'); location.href='../teacher/student_feedback.php';</script>";
+				echo "<script>alert('Feedback submitted successfully!'); location.href='../teacher/teacher_feedback.php';</script>";
 			} else {
 				$error[] = "Failed to submit feedback: " . mysqli_error($conn);
 			}
@@ -73,8 +73,8 @@ if ($role != 'teacher'){
             margin: 0 5px;
             text-transform: capitalize;
 			background-color: whitesmoke;
-			margin-top: 30px;
-			margin-left: 40%;
+			margin-top: 20px;
+			margin-left: 37.5%;
 			border-radius: 10px;
 			box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
 			cursor: pointer;

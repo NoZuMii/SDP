@@ -63,23 +63,23 @@
     <h1 class="title centered">Teacher Homepage</h1>
         <div class="container">
             <div class="box">
-                <a href="../teacher/quizcategory.php" class="box-content" target="blank">
+                <a href="../teacher/quizcategory.php" class="box-content" >
                     <h2>Quiz</h2>
                 </a>
             </div>
             <div class="box">
-                <a href="../teacher/viewCourses.php" class="box-content" target="blank">
+                <a href="../teacher/viewCourses.php" class="box-content" >
                     <h2>Courses</h2>
                 </a>
             </div>
             <div class="box">
-                <a href="../teacher/teacher_feedback.php" class="box-content" target="blank">
+                <a href="../teacher/teacher_feedback.php" class="box-content">
                     <h2> My Feedbacks</h2>
                 </a>
             </div>
 
             <div class="box">
-                <a href="../teacher/student_feedback.php" class="box-content" target="blank">
+                <a href="../teacher/student_feedback.php" class="box-content">
                     <h2>Student Feedbacks</h2>
                 </a>
             </div>
