@@ -14,10 +14,12 @@
         .title {
             font-weight: bold;
             text-decoration: underline;
+            font-family: Arial, Helvetica, sans-serif;
             margin-left: 20px; /* Add margin between the button and the heading */
         }
         .centered {
             text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
         }
         .container {
             display: flex; 
@@ -28,6 +30,7 @@
         button {
             padding: 10px 20px; 
             font-size: 25px; 
+            font-family: Arial, Helvetica, sans-serif;
             background-color: lightblue; 
             color: #ffffff; 
             border: none; 
@@ -42,10 +45,12 @@
         button a {
             color: inherit; 
             text-decoration: none; 
+            font-family: Arial, Helvetica, sans-serif;
         }
         input.product-search-input{
             width: 13vw;
             font-size: 1vw;
+            font-family: Arial, Helvetica, sans-serif;
             height: 2vw;
             min-height: 2vw;
             margin-left: 20px; 
@@ -71,10 +76,12 @@
             text-align: center;
             width: 100%;
             margin-bottom: 10px;
+            font-family: Arial, Helvetica, sans-serif;
         }
         .L2{
             background-color: lightskyblue;
             font-size: 24px;
+            font-family: Arial, Helvetica, sans-serif;
             border-radius: 5px;
             width: 80%;
             float: left;
@@ -84,18 +91,6 @@
         }
         .right{
             float: right;
-        }
-        button1 {
-            font-size: 25px; 
-            background-color: lightskyblue;
-            color: black; 
-            border-radius: 5px; 
-            cursor: pointer; 
-            border: none;
-            margin-left: 10px;
-        }
-        button1:hover {
-            background-color: #2980b9; 
         }
     </style>
 </head>

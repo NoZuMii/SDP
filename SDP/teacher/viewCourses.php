@@ -95,6 +95,7 @@
                 text-align: center;
                 align-items: center;
                 margin-left: 10px;
+                font-family: Arial, Helvetica, sans-serif;
             }
             .icon{
                 margin-left: 10px;

@@ -108,6 +108,7 @@
         }
         .example{
             font-size: 20px;
+            font-family: Arial, Helvetica, sans-serif;
         }
     </style>
 </head>

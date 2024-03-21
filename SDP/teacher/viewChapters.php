@@ -80,6 +80,7 @@
         }
         .left{
             float: left;
+            font-family: Arial, Helvetica, sans-serif;
         }
         .right{
             float: right;

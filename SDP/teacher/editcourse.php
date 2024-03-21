@@ -116,6 +116,7 @@
             .sizing{
                 font-size: 20px;
                 margin: 10px;
+                font-family: Arial, Helvetica, sans-serif;
             }
 
     </style>
