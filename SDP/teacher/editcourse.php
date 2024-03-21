@@ -1,14 +1,14 @@
 <?php
-    session_start();
     include '../includes/header.php';
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>View Courses</title>
-        <style>
+<head>
+    <title>Add Course</title>
+    <style>
             .default-button {
                 padding: 8px 10px;
                 font-size: 16px;
@@ -42,7 +42,7 @@
             button {
                 padding: 10px 20px; 
                 font-size: 25px; 
-                background-color: lightblue; 
+                background-color: #8BD0FE; 
                 color: #ffffff; 
                 border: none; 
                 border-radius: 5px; 
@@ -80,6 +80,18 @@
             padding: 10px;
             background-color: lightblue; 
             box-sizing: border-box;
+            align-items: center;
+            text-align: center;
+            }
+
+            div.blue1{
+            flex-grow: 1;
+            border: 1px ;
+            margin: 20px;
+            padding: 10px;
+            background-color: #BBE3FE; 
+            box-sizing: border-box;
+            text-align: left;
             }
 
             div.container1{
@@ -100,55 +112,48 @@
                 margin-left: 10px;
                 margin-top: 10px;
             }
-        </style>
-    </head>
-    <body>
-    <?php
-            include('../modules/config.php');
-            $sql = "SELECT * FROM course";
-            $result = mysqli_query($conn,$sql);
-        ?>
-    <div class="container pad">
-    <h1 class="title centered">Courses</h1>
-            <button><a href="../teacher/addCourse.php" style="vertical-align: middle;">Add Course</a></button>
+
+            .sizing{
+                font-size: 20px;
+                margin: 10px;
+            }
+
+    </style>
+</head>
+<body>
+<div class="container pad">
+    <h1 class="title centered">Update Course</h1>
+            <button><a href="../teacher/viewCourses.php" style="vertical-align: middle;">Back</a></button>
         </div>
-    <div class="blue">
-    <?php
-        while ($row=mysqli_fetch_array($result))
-        {
-            echo '<div class="container1">';
-
-            echo '<img class ="icon" src="../icons/';
-            echo $row['Course_Pic'];
-            echo '" alt="Python" width="200" height="200">';
-
-            echo '<coursesname class = "coursesname">Course: ';
-            echo $row['Course_name'];
-            echo '</coursesname><br>';
-
-            echo '<coursesname class = "coursesname"> Category: ';
-            echo $row['course_category'];
-            echo '</coursesname><br>';
-
-            echo '<form action="sessioncourse2.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
-                <a><button class="default-button" name = "courseID" value = "'.$row['CourseID'].'">update</button></a>
-                </form>';
-
-            echo '<form action="sessioncourse.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
-                <a><button class="default-button" name = "courseID" value = "'.$row['CourseID'].'">view</button></a>
-                </form>';
-
-            echo '<form action="sessioncourse3.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
-                <a><button class="default-button" name = "courseID" value = "'.$row['CourseID'].'">delete</button></a>
-                </form>';
-
-            echo '</div>';
-        }
-        ?>
-
-    </div>
-    </body>
+<div class="blue">
+<form action="editCoursedb.php" method="POST" enctype="multipart/form-data">
+<div class= "blue1">
+        <label class= "sizing" for="example1">Course name: </label>
+        <input class= "sizing" type= "text" name="course_name"><br>
+        <label class= "sizing" for="example1">Category: </label>
+        <input class= "sizing" type= "text" name="course_cate"><br>
+        <label class= "sizing" for="example1">Course Icon: </label>
+        <input class= "sizing" type="file" name="file"><br>
+        <label class= "sizing" for="example1">Badge Img: </label>
+        <input class= "sizing" type="file" name="file2"><br>
+        <label class= "sizing" for="example1">Second Badge Img: </label>
+        <input class= "sizing" type="file" name="file3"><br>
+        <label class= "sizing" for="example1">Third Badge Img: </label>
+        <input class= "sizing" type="file" name="file4"><br>
+        <label class= "sizing" for="example1">premium or not premium: </label>
+        <select class= "sizing" name="premium" required><br>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
+        </div>
+        <button type="submit" name="submit">submit</button>
+</form>
+</div>
+    
+</body>
 </html>
 <?php
     include '../includes/footer.php';
 ?>
+
+ 

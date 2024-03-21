@@ -9,84 +9,147 @@
 <head>
     <title>Add Course</title>
     <style>
+            .default-button {
+                padding: 8px 10px;
+                font-size: 16px;
+                background-color: #82E2FA;
+                color: #FEFEFE;
+                border: 0px solid #000000; 
+                border-radius: 5px;
+                cursor: pointer;
+                text-decoration: none;
+                margin-left: 10px;
+                margin-bottom: 5px;
+            }
+
+            .default-button:hover {
+                background-color: #B0DFFE;
+            }
+            .title {
+                font-weight: bold;
+                text-decoration: underline;
+                margin-left: 20px;
+            }
+            .centered {
+                text-align: center;
+            }
+            .container {
+                display: flex; 
+                align-items: center; 
+                justify-content: space-between; 
+                margin-bottom: 20px; 
+            }
+            button {
+                padding: 10px 20px; 
+                font-size: 25px; 
+                background-color: #8BD0FE; 
+                color: #ffffff; 
+                border: none; 
+                border-radius: 5px; 
+                cursor: pointer; 
+                text-decoration: none; 
+            }
+            button:hover {
+                background-color: #2980b9; 
+            }
+            
+            button a {
+                color: inherit; 
+                text-decoration: none; 
+            }
+            input.product-search-input{
+                width: 13vw;
+                font-size: 1vw;
+                height: 2vw;
+                min-height: 2vw;
+                margin-left: 20px; 
+            }
+        
+            div.search-container{
+                display: flex;
+                align-items: center;
+            }
+            div.pad{
+                padding:10px;
+            }
+            div.blue{
+            flex-grow: 1;
+            height:750px;
+            border: 1px ;
+            margin: 20px;
+            padding: 10px;
+            background-color: lightblue; 
+            box-sizing: border-box;
+            align-items: center;
+            text-align: center;
+            }
+
+            div.blue1{
+            flex-grow: 1;
+            border: 1px ;
+            margin: 20px;
+            padding: 10px;
+            background-color: #BBE3FE; 
+            box-sizing: border-box;
+            text-align: left;
+            }
+
+            div.container1{
+                container-type: size;
+                background-color: #DEFDFF;
+                width: 220px;
+                height: 360px;
+                float: left;
+                margin: 10px;
+            }
+            .coursesname{
+                font-size: 20px;
+                text-align: center;
+                align-items: center;
+                margin-left: 10px;
+            }
+            .icon{
+                margin-left: 10px;
+                margin-top: 10px;
+            }
+
+            .sizing{
+                font-size: 20px;
+                margin: 10px;
+            }
 
     </style>
 </head>
 <body>
-<div class="row">
-    <span class="title1" style="margin-left:40%;font-size:30px;"><b>Enter Course Details</b></span><br /><br />
-    <div class="col-md-3"></div><div class="col-md-6">   <form class="form-horizontal title1" name="form" action=""  method="POST">
-    <fieldset>
-
-
-    <!-- Text input-->
-    <div class="form-group">
-        <label class="col-md-12 control-label" for="name"></label>  
-        <div class="col-md-12">
-        <input id="name" name="name" placeholder="Enter Course title" class="form-control input-md" type="text">
-            
+<div class="container pad">
+    <h1 class="title centered">Add Course</h1>
+            <button><a href="../teacher/viewCourses.php" style="vertical-align: middle;">Back</a></button>
         </div>
-    </div>
-
-     <!-- Text input-->
-     <div class="form-group">
-        <label class="col-md-12 control-label" for="tag"></label>  
-        <div class="col-md-12">
-        <input id="tag" name="tag" placeholder="Enter course Category" class="form-control input-md" type="text">
-            
+<div class="blue">
+<form action="addCoursedb.php" method="POST" enctype="multipart/form-data">
+    <div class= "blue1">
+        <label class= "sizing" for="example1">Course name: </label>
+        <input class= "sizing" type= "text" name="course_name"><br>
+        <label class= "sizing" for="example1">Category: </label>
+        <input class= "sizing" type= "text" name="course_cate"><br>
+        <label class= "sizing" for="example1">Course Icon: </label>
+        <input class= "sizing" type="file" name="file"><br>
+        <label class= "sizing" for="example1">Badge Img: </label>
+        <input class= "sizing" type="file" name="file2"><br>
+        <label class= "sizing" for="example1">Second Badge Img: </label>
+        <input class= "sizing" type="file" name="file3"><br>
+        <label class= "sizing" for="example1">Third Badge Img: </label>
+        <input class= "sizing" type="file" name="file4"><br>
+        <label class= "sizing" for="example1">premium or not premium: </label>
+        <select class= "sizing" name="premium" required><br>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br><br>
         </div>
-    </div>
-
-    <!-- Text input-->
-    <div class="form-group">
-        <label class="col-md-12 control-label" for="total"></label>  
-        <div class="col-md-12">
-        <input id="total" name="total" placeholder="Enter total number of questions" class="form-control input-md" type="number">
-        
-        </div>
-    </div>
-
-    <!-- Text input-->
-    <div class="form-group">
-        <label class="col-md-12 control-label" for="right"></label>  
-        <div class="col-md-12">
-        <input id="right" name="right" placeholder="Enter marks on right answer" class="form-control input-md" min="0" type="number">
-            
-        </div>
-    </div>
-
-    <!-- Text input-->
-    <div class="form-group">
-        <label class="col-md-12 control-label" for="wrong"></label>  
-        <div class="col-md-12">
-        <input id="wrong" name="wrong" placeholder="Enter minus marks on wrong answer without sign" class="form-control input-md" min="0" type="number">
-            
-        </div>
-    </div>
+        <button type="submit" name="submit">submit</button>
+</form>
+</div>
     
-    <!-- Text input-->
-    <div class="form-group">
-        <label class="col-md-12 control-label" for="desc"></label>  
-        <div class="col-md-12">
-        <textarea rows="8" cols="8" name="desc" class="form-control" placeholder="Write description here..."></textarea>  
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="col-md-12 control-label" for="quizpic"></label>  
-        <div class="col-md-12">
-        
-        <input type="file" name="image" id="image" placeholder="please insert a picture" class="file-input" accept=".png, .jpg, .jpeg, image/png, image/jpeg"><br>
-
-    <div class="form-group">
-        <label class="col-md-12 control-label" for=""></label>
-        <div class="col-md-12"> 
-            <input  type="submit" style="margin-left:45%" class="btn btn-primary" value="Submit" class="btn btn-primary"/>
-        </div>
-    </div>
-
-    </fieldset>
-    </form></div>'
 </body>
 </html>
 <?php

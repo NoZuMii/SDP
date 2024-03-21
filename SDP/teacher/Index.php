@@ -63,12 +63,12 @@
     <h1 class="title centered">Teacher Homepage</h1>
         <div class="container">
             <div class="box">
-                <a href="../teacher/quizcategory.php" class="box-content" >
+                <a href="../teacher/quizcategory.php" class="box-content">
                     <h2>Quiz</h2>
                 </a>
             </div>
             <div class="box">
-                <a href="../teacher/viewCourses.php" class="box-content" >
+                <a href="../teacher/viewCourses.php" class="box-content">
                     <h2>Courses</h2>
                 </a>
             </div>

@@ -26,14 +26,13 @@
             margin-bottom: 20px; 
         }
         button {
-            padding: 10px 20px; 
             font-size: 25px; 
-            background-color: lightblue; 
-            color: #ffffff; 
-            border: none; 
+            background-color: lightskyblue;
+            color: black; 
             border-radius: 5px; 
             cursor: pointer; 
-            text-decoration: none; 
+            border: none;
+            margin-left: 5px;
         }
         button:hover {
             background-color: #2980b9; 
@@ -59,7 +58,7 @@
             padding:10px;
         }
         div.blue{
-            height:750px;
+            height:500px;
             border: 1px ;
             margin: 20px;
             padding: 10px;
@@ -85,40 +84,118 @@
         .right{
             float: right;
         }
-        button1 {
-            font-size: 25px; 
-            background-color: lightskyblue;
-            color: black; 
-            border-radius: 5px; 
-            cursor: pointer; 
-            border: none;
-            margin-left: 10px;
+
+        .default{
+            padding: 10px 20px; 
+                font-size: 25px; 
+                background-color: #8BD0FE; 
+                color: #ffffff; 
+                border: none; 
+                border-radius: 5px; 
+                cursor: pointer; 
+                text-decoration: none; 
         }
-        button1:hover {
+
+        .default:hover {
             background-color: #2980b9; 
-        }
+            }
     </style>
 </head>
 <body>
-<div class="container pad">
-        <button><a href="../teacher/addChapters.php" style="vertical-align: middle;">Add Chapters</a></button>
-        <h1 class="title centered">Chapters</h1>
-        <div class="search-container">
-            <input type="text" name="search-input" class="product-search-input" id="product-search-input" placeholder="Search Chapters" required>
-            <button class="search-button" type="submit">🔍</button>
-        </div>
+        <?php
+            include('../modules/config.php');
+            $courseID = $_SESSION['courseID'];
+            $sql = "SELECT * FROM course WHERE CourseID = '$courseID'";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+        ?>
+    <div class="container pad">
+        <?php echo '<h1 class="title centered"> Chapter Name: '.$row["Course_name"].'</h1>'; ?>
+        <button class="default"><a href="../teacher/viewCourses.php" style="vertical-align: middle;">Back</a></button>
     </div>
     <div class="blue">
-        <div class="container1">
+
+            <div class="container1">
             <div class = "L1">
-                <div class = "L2">
-                    <Quizname class = "left">python</Quizname>
-                </div>
-                <button1><a href = "../teacher/viewContent.php">view</a></button1>
-                <button1><a href = "../teacher/editChapter.php">edit</a></button1>
+            <div class = "L2">
+            <Quizname class = "left">Chapter 1</Quizname>
             </div>
-        </div>
+            <form action="viewContent.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
+            <button name="code" value = "1"><a>view</a></button>
+            </form>
+
+            <form action="editcontent.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
+            <button name="code" value = "1"><a>update</a></button>
+            </form>
+            </div>
+            </div>
+
+            
+            <div class="container1">
+            <div class = "L1">
+            <div class = "L2">
+            <Quizname class = "left">Chapter 2</Quizname>
+            </div>
+            <form action="viewContent.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
+            <button name="code" value = "2"><a>view</a></button>
+            </form>
+
+            <form action="editcontent.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
+            <button name="code" value = "2"><a>update</a></button>
+            </form>
+            </div>
+            </div>
+
+
+            <div class="container1">
+            <div class = "L1">
+            <div class = "L2">
+            <Quizname class = "left">Chapter 3</Quizname>
+            </div>
+            <form action="viewContent.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
+            <button name="code" value = "3"><a>view</a></button>
+            </form>
+
+            <form action="editcontent.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
+            <button name="code" value = "3"><a>update</a></button>
+            </form>
+            </div>
+            </div>
+
+
+            <div class="container1">
+            <div class = "L1">
+            <div class = "L2">
+            <Quizname class = "left">Chapter 4</Quizname>
+            </div>
+            <form action="viewContent.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
+            <button name="code" value = "4"><a>view</a></button>
+            </form>
+
+            <form action="editcontent.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
+            <button name="code" value = "4"><a>update</a></button>
+            </form>
+            </div>
+            </div>
+
+
+            <div class="container1">
+            <div class = "L1">
+            <div class = "L2">
+            <Quizname class = "left">Chapter 5</Quizname>
+            </div>
+            <form action="viewContent.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
+            <button name="code" value = "5"><a>view</a></button>
+            </form>
+
+            <form action="editcontent.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
+            <button name="code" value = "5"><a>update</a></button>
+            </form>
+            </div>
+            </div>
     </div>
+    </div>
+    
 </body>
 </html>
 <?php

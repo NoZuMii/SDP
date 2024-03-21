@@ -68,12 +68,12 @@
             box-sizing: border-box;
         }
         div.blue1{
-            height:30%;
+            height:20%;
             border: 1px ;
             margin: 20px;
             padding: 10px;
-            background-color: lightblue; 
-            text-align: center;
+            background-color: #DEFDFF; 
+            text-align: left;
             box-sizing: border-box;
         }
         div.L1{
@@ -106,24 +106,167 @@
         button1:hover {
             background-color: #2980b9; 
         }
+        .example{
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
 <div class="container pad">
         <button><a href="../teacher/viewChapters.php" style="vertical-align: middle;">Back</a></button>
         <h1 class="title centered">Chapter name</h1>
-        <button><a href="../teacher/editChapter.php" style="vertical-align: middle;">edit</a></button>
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['code'])) {
+                $code = $_POST['code'];
+                
+                if ($code === '1') {
+                    echo '<form action="editcontent.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
+                        <button name="code" value = "1" style="vertical-align: middle;"><a>update</a></button>
+                        </form>';
+                } 
+                else if ($code === '2') {
+                    echo '<form action="editcontent.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
+                        <button name="code" value = "2" style="vertical-align: middle;"><a>update</a></button>
+                        </form>';
+                } 
+                else if ($code === '3') {
+                    echo '<form action="editcontent.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
+                        <button name="code" value = "3" style="vertical-align: middle;"><a>update</a></button>
+                        </form>';
+                } 
+                else if ($code === '4') {
+                    echo '<form action="editcontent.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
+                        <button name="code" value = "4" style="vertical-align: middle;"><a>update</a></button>
+                        </form>';
+                } 
+                else if ($code === '5') {
+                    echo '<form action="editcontent.php" method="POST" enctype="multipart/form-data" style = "display:inline;">
+                        <button name="code" value = "5" style="vertical-align: middle;"><a>update</a></button>
+                        </form>';
+                } 
+                else {
+                    echo "Invalid code value!";
+                }
+            } 
+            else {
+                echo "Code parameter is missing!";
+            }
+        }
+        ?>
     </div>
     <div class="blue">
-        <div class= "blue1">
-            <a>example</a>
-        </div>
-        <div class= "blue1">
-            <a>explanation</a>
-        </div>
-        <div class= "blue1">
-            <a>Short question</a>
-        </div>
+        <?php
+            include('../modules/config.php');
+            $courseID = $_SESSION['courseID'];
+            $sql = "SELECT * FROM course WHERE CourseID = '$courseID'";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+        ?>
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['code'])) {
+                $code = $_POST['code'];
+                
+                if ($code === '1') {
+                    echo '<div class= "blue1">
+                        <label class="example">Example:</label><br>
+                            <a>'.$row["example1"].'</a>
+                        </div>
+                        <div class= "blue1">
+                        <label class="example">Explanation:</label><br>
+                            <a>'.$row["explanation1"].'</a>
+                        </div>
+                        <div class= "blue1">
+                        <label class="example">Question:</label><br>
+                            <a>'.$row["question1"].'</a>
+                        </div>
+                        <div class= "blue1">
+                        <label class="example">Answer:</label><br>
+                            <a>'.$row["answer1"].'</a>
+                        </div>';
+                } 
+                else if ($code === '2') {
+                    echo '<div class= "blue1">
+                    <label class="example">Example:</label><br>
+                            <a>'.$row["example2"].'</a>
+                        </div>
+                        <div class= "blue1">
+                        <label class="example">Explanation:</label><br>
+                            <a>'.$row["explanation2"].'</a>
+                        </div>
+                        <div class= "blue1">
+                        <label class="example">Question:</label><br>
+                            <a>'.$row["question2"].'</a>
+                        </div>
+                        <div class= "blue1">
+                        <label class="example">Answer:</label><br>
+                            <a>'.$row["answer2"].'</a>
+                        </div>';
+                } 
+                else if ($code === '3') {
+                    echo '<div class= "blue1">
+                    <label class="example">Example:</label><br>
+                        <a>'.$row["example3"].'</a>
+                    </div>
+                    <div class= "blue1">
+                    <label class="example">Explanation:</label><br>
+                        <a>'.$row["explanation3"].'</a>
+                    </div>
+                    <div class= "blue1">
+                    <label class="example">Question:</label><br>
+                        <a>'.$row["question3"].'</a>
+                    </div>
+                    <div class= "blue1">
+                    <label class="example">Answer:</label><br>
+                        <a>'.$row["answer3"].'</a>
+                    </div>';
+                } 
+                else if ($code === '4') {
+                    echo '<div class= "blue1">
+                    <label class="example">Example:</label><br>
+                        <a>'.$row["example4"].'</a>
+                    </div>
+                    <div class= "blue1">
+                    <label class="example">Explanation:</label><br>
+                        <a>'.$row["explanation4"].'</a>
+                    </div>
+                    <div class= "blue1">
+                    <label class="example">Question:</label><br>
+                        <a>'.$row["question4"].'</a>
+                    </div>
+                    <div class= "blue1">
+                    <label class="example">Answer:</label><br>
+                        <a>'.$row["answer4"].'</a>
+                    </div>';
+                } 
+                else if ($code === '5') {
+                    echo '<div class= "blue1">
+                    <label class="example">Example:</label><br>
+                        <a>'.$row["example5"].'</a>
+                    </div>
+                    <div class= "blue1">
+                    <label class="example">Explanation:</label><br>
+                        <a>'.$row["explanation5"].'</a>
+                    </div>
+                    <div class= "blue1">
+                    <label class="example">Question:</label><br>
+                        <a>'.$row["question5"].'</a>
+                    </div>
+                    <div class= "blue1">
+                    <label class="example">Answer:</label><br>
+                        <a>'.$row["answer5"].'</a>
+                    </div>';
+                } 
+                else {
+                    echo "Invalid code value!";
+                }
+            } 
+            else {
+                echo "Code parameter is missing!";
+            }
+        }
+        ?>
     </div>
 </body>
 </html>
